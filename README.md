@@ -2,12 +2,15 @@
 
 This project is a simple weather application that fetches and displays weather information for a specified city using the OpenWeatherMap API. The app is built with HTML, CSS, and JavaScript, and includes jQuery for a gradient background animation.
 
+
 ## Features
 
 - User can input the name of a city to get the current weather details.
 - Displays temperature, humidity, pressure, and wind speed.
 - Shows an icon representing the current weather condition.
 - Animated background gradient using jQuery.
+
+### Live Deom: [Weather-App](https://weather-app.xtgem.com/)
 
 ## Prerequisites
 
@@ -82,6 +85,10 @@ This file contains the CSS for styling the web app. It includes styles for:
 - Search field and button.
 - Weather details display.
 - Background gradient animation.
+
+### `icons by:`
+-  <a href="https://www.flaticon.com/free-icons/weather" title="weather icons">Weather icons created by GOWI - Flaticon</a>
+-  <a href="https://icons8.com/" title="icons8">icons8</a>
 
 ## License
 
