@@ -19,7 +19,6 @@ body {
     height: 100%;
     padding: 50px;
     margin: 0px;
-
 }
 
 .card {
@@ -55,7 +54,6 @@ body {
     flex: 1;
     margin-right: 16px;
     font-size: 18px;
-    /* background: linear-gradient(21deg, #10abff, #1beabd); */
 }
 
 .search-field button {
@@ -69,7 +67,6 @@ body {
 }
 
 .search-field button img {
-
     width: 48px;
     height: 48px;
 }
@@ -102,7 +99,6 @@ body {
     justify-content: space-between;
     padding: 0 20px;
     margin-top: 50px;
-
 }
 
 .col {
@@ -124,4 +120,41 @@ body {
 .weather-details {
     display: none;
     flex-direction: row;
+}
+
+/* New Styles */
+.temperature-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.temperature-icon {
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
+}
+
+.sun-times {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.sun-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sun-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+}
+
+.sun-time p {
+    margin: 0;
+    font-size: 18px;
 }

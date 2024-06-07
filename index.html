@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weather App</title>
+  <link rel="apple-touch-icon" href="images/weather-app.png">
+  <link rel="icon" href="images/weather-app.png" />
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 </head>
@@ -13,17 +15,27 @@
   <div id="gradient">
     <div class="card">
       <div class="search-field">
-        <input type="text" , placeholder="Name of your city" spellcheck="false" />
+        <input type="text" placeholder="Name of your city" spellcheck="false" />
         <button><img src="images/search.png" alt="" /></button>
       </div>
       <div class="weather-details">
         <div class="place">
           <img src="images/weather.png" alt="" class="weatherIcon" />
-          <!-- <div class="col">
-            <img src="images/temperatures.png" alt="">
-          </div> -->
-          <h1 class="temperature">0°C</h1>
+          <div class="temperature-container">
+            <!-- <img src="images/temperatures.png" alt="" class="temperature-icon" /> -->
+            <h1 class="temperature">0°C</h1>
+          </div>
           <h2 class="city">City</h2>
+          <div class="sun-times">
+            <div class="sun-time">
+              <img src="images/sunrise.png" alt="Sunrise" class="sun-icon" />
+              <p class="sunrise">6:00 AM</p>
+            </div>
+            <div class="sun-time">
+              <img src="images/sunset.png" alt="Sunset" class="sun-icon" />
+              <p class="sunset">6:00 PM</p>
+            </div>
+          </div>
         </div>
         <div class="details">
           <div class="col">
@@ -48,10 +60,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="col" display>
-          <img src="images/sunrise.png" alt="">
-          <img src="images/sunset.png" alt="">
-        </div> -->
       </div>
     </div>
   </div>
@@ -130,7 +138,7 @@
     setInterval(updateGradient, 10);
 
     // API paste your API key
-    const apiSecret = "21ab3305c442e25468237a534ce54e74";
+    const apiSecret = "API-KEY";
     const apiUrl =
       "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
@@ -154,10 +162,27 @@
         ".weatherIcon"
       ).src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
+      // Convert sunrise and sunset times to 12-hour format
+      const sunriseTime = convertUnixTo12HrFormat(data.sys.sunrise);
+      const sunsetTime = convertUnixTo12HrFormat(data.sys.sunset);
+
+      document.querySelector(".sunrise").innerHTML = sunriseTime;
+      document.querySelector(".sunset").innerHTML = sunsetTime;
 
       document.querySelector(".weather-details").style.display = "flex";
 
       console.log(data);
+    }
+
+    function convertUnixTo12HrFormat(unix_timestamp) {
+      const date = new Date(unix_timestamp * 1000);
+      let hours = date.getHours();
+      let minutes = "0" + date.getMinutes();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      const formattedTime = hours + ':' + minutes.substr(-2) + ' ' + ampm;
+      return formattedTime;
     }
 
     searchButton.addEventListener("click", () => {
